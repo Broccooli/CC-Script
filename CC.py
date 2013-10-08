@@ -26,9 +26,6 @@ def stop(event):
         hm.UnhookKeyboard()
         sys.exit("You quit")
 
-def checkStop():
-    time.sleep(1)
-
 def loopClick(mouse):
     while(True):
         click(mouse)
