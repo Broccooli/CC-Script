@@ -13,6 +13,7 @@ def click(mouse):
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,mouse[0],mouse[1],0,0)
 
 def start(event):
+    hm.UnhookMouse()
     print "Starting"
     mousePos = event.Position
     print "Got Mouse position, beginning loop"
@@ -22,13 +23,15 @@ def start(event):
 
 def stop(event):
     if (event.KeyID == 27):
-        hm.UnhookMouse()
         hm.UnhookKeyboard()
         sys.exit("You quit")
 
 def loopClick(mouse):
     while(True):
         click(mouse)
+
+saveerr = sys.stderr
+sys.stderr = open("error.txt", "w")
 
 cookieClickerURL = "http://orteil.dashnet.org/cookieclicker/"
 mousePos = (0,0)
